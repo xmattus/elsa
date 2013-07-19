@@ -1,0 +1,66 @@
+from classes import *
+
+# This is where all the emission lines recognized by ELSA are defined.
+
+config_emission_lines = [
+	Line(
+		atom='C',
+		stage=3,
+		wavelength=1175.0,
+		forbidden=False
+	),
+	Line(
+		atom='N',
+		stage=3,
+		wavelength=1241.0,
+		forbidden=False
+	),
+	Line(
+		atom='H',
+		stage=2,
+		wavelength=3968.0,
+		forbidden=False
+	),
+	Line(
+		atom='H',
+		stage=2,
+		wavelength=4101.0,
+		forbidden=False
+	),
+	Line(
+		atom='H',
+		stage=2,
+		wavelength=4340.0,
+		forbidden=False
+	),
+	Line(
+		atom='O',
+		stage=3,
+		wavelength=4363.23,
+		forbidden=False
+	),
+	Line(
+		atom='He',
+		stage=2,
+		wavelength=4686.68,
+		forbidden=False
+	),
+	Line(
+		atom='H',
+		stage=2,
+		wavelength=4861.33,
+		forbidden=False
+	),
+	Line(
+		atom='O',
+		stage=3,
+		wavelength=5006.84,
+		forbidden=True
+	),
+	Line(
+		atom='H',
+		stage=2,
+		wavelength=6563.0,
+		forbidden=False
+	)
+]

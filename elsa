@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+import argparse
+import sys
+import importlib
+from config import *
+
+
+parser = argparse.ArgumentParser(prog='elsa', description='Emission Line Spectrum Analyzer.')
+parser.add_argument('task', nargs=1, help='task name to be executed')
+parser.add_argument('filename', nargs='+', help='File(s) to processed (see documentation for task-specific file requirements')
+parser.add_argument('-z', '--redshift', help='Redshift of the object being analyzed')
+parser.add_argument('-s', '--scale', help='Scale factor if spectrum is segmented (red/blue)')
+args = parser.parse_args()
+
+try:
+	module = importlib.import_module('tasks.' + args.task[0])
+except ImportError:
+	print "Task '" + args.task[0] + "' does not exist."
+	sys.exit()
+
+if not hasattr(module, 'run'):
+	print "Module '" + args.task[0] + "' does not appear to be a validly formatted ELSA task."
+	sys.exit()
+module.run(args)
+try:
+	module.run(args)
+except TypeError:
+	print "Task run function has invalid argument signature."
+	sys.exit()
