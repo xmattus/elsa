@@ -22,7 +22,7 @@ except ImportError:
 if not hasattr(module, 'run'):
 	print "Module '" + args.task[0] + "' does not appear to be a validly formatted ELSA task."
 	sys.exit()
-module.run(args)
+
 try:
 	module.run(args)
 except TypeError:

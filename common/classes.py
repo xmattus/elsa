@@ -19,6 +19,9 @@ class Input:
 	def identify(self):
 		self.identified_line = None
 		for line in config_emission_lines:
-			print "%f %f %f\n" % (self.wavelength, line.wavelength - max_tolerance_optical, line.wavelength + max_tolerance_optical)
 			if self.wavelength > (line.wavelength - max_tolerance_optical) and self.wavelength < (line.wavelength + max_tolerance_optical):
 				self.identified_line = line	
+
+	def apply_redshift(self, z):
+		self.obs_wavelength = self.wavelength
+		self.wavelength = self.wavelength / (1.0 + z)
